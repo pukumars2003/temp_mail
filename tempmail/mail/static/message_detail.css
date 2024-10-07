@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.inbox-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.inbox-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.inbox-header .col-h {
+    flex: 1;
+    text-align: center;
+}
+
+.message-detail {
+    padding: 20px;
+    border: 1px solid #0a0a0a;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.message-header {
+    margin-bottom: 20px;
+}
+
+.message-header h2 {
+    margin-bottom: 10px;
+}
+
+.message-header p {
+    margin-bottom: 5px;
+}
+
+.message-body {
+    margin-bottom: 20px;
+}
+
+.attachments ul {
+    list-style: none;
+    padding: 0;
+}
+
+.attachments li {
+    margin-bottom: 5px;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}

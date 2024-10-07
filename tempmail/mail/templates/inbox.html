@@ -1,0 +1,107 @@
+
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'loader.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+    <style>
+        
+    </style>
+    <script>
+        async function fetchInbox() {
+            const response = await fetch(window.location.href);
+            const data = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, 'text/html');
+            const inboxContent = doc.querySelector('#inbox-content');
+            document.querySelector('#inbox-content').innerHTML = inboxContent.innerHTML;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchInbox(); // Initial fetch
+            setInterval(fetchInbox, 5000); // Refresh every 5 seconds
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Inbox Container -->
+    <div class="inbox-container">
+        <!-- Inbox Header -->
+         
+        <div class="inbox-header">
+            <div class="col-h">Date</div>
+            <div class="col-h hidden-sm">Sender</div>
+            <div class="col-h hidden-sm">Subject</div>
+        </div>
+
+        <!-- Inbox Data List -->
+        <div class="inbox-dataList">
+            <ul id="inbox-content">
+                {% for message in messages %}
+                    <li>
+                        <div class="col-box">
+                            <a href="{% url 'message_detail' domain=message.domain login=message.login message_id=message.id %}" title="{{ message.subject }}" class="viewLink">
+                                <span class="inboxSenderName">{{ message.date }}</span>
+                                <!--<span class="inboxSenderEmail">{{ message.from }}</span>
+                                <span class="inboxSubject">{{ message.subject }}</span>-->
+                            </a>
+                        </div>
+                        <div class="col-box">
+                            <a href="{% url 'message_detail' domain=message.domain login=message.login message_id=message.id %}" title="{{ message.subject }}" class="viewLink">
+                            <span class="inboxSenderName">{{ message.from }}</span>
+                            </a>
+                        </div>
+                        <div class="col-box hidden-sm">
+                            <span class="inboxSubject">
+                                <a href="{% url 'message_detail' domain=message.domain login=message.login message_id=message.id %}" title="{{ message.subject }}" class="viewLink">{{ message.subject }}</a>
+                            </span>
+                        </div>
+                        {% if message.attachments %}
+                            <div class="attachment">
+                                <a href="{% url 'message_detail' domain=message.domain login=message.login message_id=message.id %}" class="viewLink link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <!-- Your SVG code here -->
+                                    </svg>
+                                </a>
+                            </div>
+                        {% endif %}
+                        <div class="m-link-view">
+                            <a href="{% url 'message_detail' domain=message.domain login=message.login message_id=message.id %}" class="viewLink link">
+                                <svg class="arrow-link-ico" width="10" height="24" viewBox="0 0 10 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Your SVG code here -->
+                                </svg>
+                            </a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- Inbox Empty Message -->
+        {% if not messages %}
+            <div class="inbox-empty">
+                <div class="inbox-empty-msg">
+                    <svg width="92" height="94" viewBox="0 0 92 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Your SVG code here -->
+                    </svg>
+                    <p class="emptyInboxTitle">Your inbox is empty</p>
+                    <p>Waiting for incoming emails</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Inbox SEO Block -->
+    <!-- Your SEO block code here -->
+</body>
+
+</html>

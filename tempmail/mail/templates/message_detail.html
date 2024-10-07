@@ -1,0 +1,123 @@
+<!-- mail/templates/mail/message_detail.html -->
+{% load custom_filters %}
+{%load static%}
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ message.subject }}</title>
+</head>
+<body>
+    <h2>{{ message.subject }}</h2>
+    <p><strong>From:</strong> {{ message.from }}</p>
+    <p><strong>To:</strong> {{ message.to }}</p>
+    <p><strong>Date:</strong> {{ message.date }}</p>
+    <hr>
+    <div>
+        {{ message.body | safe }}
+    </div>
+    {% if message.attachments %}
+        <hr>
+        <h3>Attachments:</h3>
+        <ul>
+            {% for attachment in message.attachments %}
+                <li>
+                    <a href="data:application/octet-stream;base64,{{ attachment.file_content | b64encode }}" download="{{ attachment.filename }}">{{ attachment.filename }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="javascript:history.back()">Back</a>
+</body>
+</html>-->
+<!--<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Detail</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <!-- Inbox Container -
+    <div class="inbox-container">
+        <!-- Message Detail -
+        <div class="message-detail">
+            <div class="message-header">
+                <h2>{{ message.subject }}</h2>
+                <p><strong>From:</strong> {{ message.from }}</p>
+                <p><strong>Date:</strong> {{ message.date }}</p>
+            </div>
+            <div class="message-body">
+                {{ message.body | safe }}
+            </div>
+            {% if message.attachments %}
+                <div class="attachments">
+                    <h3>Attachments:</h3>
+                    <ul>
+                        {% for attachment in message.attachments %}
+                            <li><a href="{{ attachment.downloadUrl }}" download>{{ attachment.filename }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <a href="javascript:history.back()" class="back-link">Back to Inbox</a>
+        </div>
+    </div>
+</body>
+
+</html>
+-->
+
+<!-- mail/templates/mail/message_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Detail</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <!-- Inbox Container -->
+    <div class="inbox-container">
+        <!-- Message Detail -->
+        <div class="message-detail">
+            <div class="message-header">
+                <h2>{{ message.subject }}</h2>
+                <p><strong>From:</strong> {{ message.from }}</p>
+                <p><strong>Date:</strong> {{ message.date }}</p>
+            </div>
+            <div class="message-body">
+                {{ message.body | safe }}
+            </div>
+            {% if message.attachments %}
+                <div class="attachments">
+                    <h3>Attachments:</h3>
+                    <ul>
+                        {% for attachment in message.attachments %}
+                            <li><a href="{{ attachment.downloadUrl }}" download>{{ attachment.filename }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <a href="javascript:history.back()" class="back-link">Back to Inbox</a>
+        </div>
+    </div>
+</body>
+
+</html>

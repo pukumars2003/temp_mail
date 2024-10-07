@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.inbox-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.inbox-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.inbox-header .col-h {
+    flex: 1;
+    text-align: center;
+}
+
+.inbox-empty {
+    text-align: center;
+    padding: 20px;
+}
+
+.inbox-empty-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inbox-empty-msg svg {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.inbox-dataList {
+    padding: 20px;
+}
+
+.inbox-dataList ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.inbox-dataList li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.inbox-dataList li:last-child {
+    border-bottom: none;
+}
+
+.inbox-dataList .col-box {
+    flex: 1;
+    text-align: center;
+}
+
+.inbox-dataList .col-box a {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+.inbox-dataList .col-box a:hover {
+    color: #23527c;
+}
+
+.inbox-dataList .attachment {
+    margin-right: 10px;
+}
+
+.inbox-dataList .m-link-view {
+    margin-left: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .inbox-header {
+        flex-direction: column;
+    }
+
+    .inbox-header .col-h {
+        margin-bottom: 10px;
+    }
+
+    .inbox-dataList li {
+        flex-direction: column;
+    }
+
+    .inbox-dataList .col-box {
+        margin-bottom: 10px;
+    }
+}

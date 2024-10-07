@@ -1,0 +1,42 @@
+<!-- mail/templates/mail/home.html 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temporary Email Service</title>
+</head>
+<body>
+    <h1>Temporary Email Service</h1>
+    <form method="post">
+        {% csrf_token %}
+        <select name="domain">
+            {% for domain in domains %}
+                <option value="{{ domain }}">{{ domain }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="login" placeholder="Enter login">
+        <button type="submit">Get Messages</button>
+    </form>
+</body>
+</html>
+-->
+<!-- mail/templates/mail/home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temporary Email Service</title>
+</head>
+<body>
+    <h1>Temporary Email Service</h1>
+    <form method="post">
+        {% csrf_token %}
+        <select name="domain">
+            {% for domain in domains %}
+                <option value="{{ domain }}">{{ domain }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="login" placeholder="Enter login">
+        <button type="submit">Get Messages</button>
+    </form>
+</body>
+</html>
